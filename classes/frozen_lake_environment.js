@@ -214,16 +214,17 @@ class FrozenLakeEnvironment {
             this.agentPosition.x == this.finishPosition.x &&
             this.agentPosition.y == this.finishPosition.y
         ) {
-            return 100;
+            return 10;
         }
 
         switch (this.getTileType(this.agentPosition.x, this.agentPosition.y)) {
             case TileType.Hole:
-                return -1000;
+                return -10;
             case TileType.Reward:
+                this.setTileType(this.agentPosition.x, this.agentPosition.y, TileType.Default);
                 return 1;
             default:
-                return 0;
+                return -1;
         }
     }
 
